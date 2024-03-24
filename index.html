@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <!-- Fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Your custom scripts -->
+</head>
+
+<style>
+    * {
+        padding: 0px;
+        margin: 0px;
+    }
+
+    body {
+        overflow-x: hidden;
+    }
+
+    .row {
+        margin-left: 0px !important;
+        margin-right: 0px !important;
+    }
+
+    footer {
+        width: 100%;
+        flex-shrink: 0;
+    }
+
+    @media only screen and (max-width: 767px) {
+        .row {
+            margin-left: 0px !important;
+            margin-right: 0px !important;
+        }
+
+    }
+</style>
+
+<body>
+    <div>
+        <!-- Image and text -->
+        <nav class="navbar navbar-light" style="background-color: darkblue">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <small class="text-white fs-5"><i class="fa-solid fa-car"></i> Car World</small>
+                </a>
+            </div>
+        </nav>
+        <!-- <h2 class="text-center text-primary mt-3">Car World</h2> -->
+
+        <div class="row mt-3">
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="container shadow p-3 my-2" style="height: 400px;">
+                    <h5 class="text-center text-primary mt-3">Enter Details</h5>
+                    <form class="mt-3">
+                        <label for="brand">Car Brand</label><br>
+                        <input type="text" id="carbrand" class="form-control rounded" placeholder="Car Brand"><br>
+                        <label for="price">Car Price</label><br>
+                        <input type="text" id="carprice" class="form-control rounded" placeholder="Price"><br>
+                        <label for="key">Key</label><br>
+                        <input type="text" id="carkey" class="form-control rounded" placeholder="Key"><br>
+                        <div class="text-center mt-4">
+                            <button onclick="storeRecord()" class="btn btn-outline-success" type="button">Store
+                                Records</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="container shadow p-3 my-2" style="height: 400px;">
+                    <h5 class="text-center text-primary mt-3">Retrieve Key</h5>
+                    <label for="key">Key</label><br>
+                    <input type="text" id="retcarkey" class="form-control rounded"
+                        placeholder="Enter key to retrieve data"><br>
+                    <div class="text-center mt-4">
+                        <button onclick="retrieveRecord()" class="btn btn-outline-primary" type="button">Retrieve
+                            Records</button>
+                    </div>
+                    <div id="result" class="mt-3"></div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12">
+                <div class="container shadow p-3 my-2" style="height: 400px;">
+                    <h5 class="text-center text-primary mt-3">Remove Data</h5>
+                    <label for="key">Key</label><br>
+                    <input type="text" id="deletekey" class="form-control rounded"
+                        placeholder="Enter key to remove data"><br>
+                    <div class="text-center mt-4">
+                        <button onclick="removeRecord()" class="btn btn-outline-danger" type="button">Remove
+                            Records</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row m-4">
+            <div class="col-12 text-center">
+                <button class="btn btn-dark" onclick="removeAllRecords()">Clear All Records</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-body-tertiary text-center mt-5 mx-auto">
+        <!-- Grid container -->
+        <div class="container p-4 pb-0">
+            <!-- Section: Social media -->
+            <section class="mb-4">
+                <!-- Facebook -->
+                <a data-mdb-ripple-init class="btn text-white btn-floating m-1" style="background-color: #3b5998;"
+                    href="#!" role="button"><i class="fab fa-facebook-f"></i></a>
+
+                <!-- Twitter -->
+                <a data-mdb-ripple-init class="btn text-white btn-floating m-1" style="background-color: #55acee;"
+                    href="#!" role="button"><i class="fab fa-twitter"></i></a>
+
+                <!-- Google -->
+                <a data-mdb-ripple-init class="btn text-white btn-floating m-1" style="background-color: #dd4b39;"
+                    href="#!" role="button"><i class="fab fa-google"></i></a>
+
+                <!-- Instagram -->
+                <a data-mdb-ripple-init class="btn text-white btn-floating m-1" style="background-color: #ac2bac;"
+                    href="#!" role="button"><i class="fab fa-instagram"></i></a>
+
+                <!-- Linkedin -->
+                <a data-mdb-ripple-init class="btn text-white btn-floating m-1" style="background-color: #0082ca;"
+                    href="#!" role="button"><i class="fab fa-linkedin-in"></i></a>
+                <!-- Github -->
+                <a data-mdb-ripple-init class="btn text-white btn-floating m-1" style="background-color: #333333;"
+                    href="#!" role="button"><i class="fab fa-github"></i></a>
+            </section>
+            <!-- Section: Social media -->
+        </div>
+        <!-- Grid container -->
+
+        <!-- Copyright -->
+        <div class="text-center text-light p-3" style="background-color: darkblue">
+            © 2024 Copyright:
+            <a class="text-light" href="#">todolistapp.com</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+
+</body>
+<script src="./script.js"></script>
+
+</html>
